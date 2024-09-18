@@ -27,7 +27,6 @@
             "/.github",
             "/.gitignore",
             "/.php-cs-fixer.dist.php",
-            "/cache",
             "/CHANGELOG.md",
             "/composer.lock",
             "/phpstan.neon.dist",

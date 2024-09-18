@@ -9,7 +9,6 @@
 /.github export-ignore
 /.gitignore export-ignore
 /.php-cs-fixer.dist.php export-ignore
-/cache export-ignore
 /CHANGELOG.md export-ignore
 /composer.lock export-ignore
 /phpstan.neon.dist export-ignore
