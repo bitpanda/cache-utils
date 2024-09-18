@@ -1,12 +1,4 @@
-/.idea
-/.php_cs.cache
-/.php-cs-fixer.cache
-/.phpunit.cache
-/.phpunit.result.cache
-/.vscode
 /cache
-/clover.xml
-/coverage
 /phpstan.neon
 /phpunit.xml
 /vendor
