@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace PoorPlebs\PackageTemplate\Tests;
+namespace Bitpanda\CacheUtils\Tests;
 
+use Bitpanda\CacheUtils\ExampleFile;
 use PHPUnit\Framework\TestCase;
-use PoorPlebs\PackageTemplate\ExampleFile;
 
 /**
- * @coversDefaultClass \PoorPlebs\PackageTemplate\ExampleFile
+ * @coversDefaultClass \Bitpanda\CacheUtils\ExampleFile
  */
 class ExampleTest extends TestCase
 {
     /**
      * @test
-     * @covers \PoorPlebs\PackageTemplate\ExampleFile
+     * @covers \Bitpanda\CacheUtils\ExampleFile
      */
     public function it_tests_something(): void
     {
