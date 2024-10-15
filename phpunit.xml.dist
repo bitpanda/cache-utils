@@ -2,16 +2,17 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.3/phpunit.xsd"
          bootstrap="vendor/autoload.php"
-         executionOrder="depends,defects"
-         beStrictAboutOutputDuringTests="true"
-         failOnRisky="true"
-         colors="true"
-         failOnWarning="true"
-         cacheResult="true"
          defaultTestSuite="default"
-         cacheDirectory="cache/.phpunit.cache"
-         requireCoverageMetadata="true"
-         beStrictAboutCoverageMetadata="true">
+         executionOrder="depends,defects"
+         failOnRisky="true"
+         failOnWarning="true"
+         failOnDeprecation="true"
+         failOnPhpunitDeprecation="true"
+         failOnEmptyTestSuite="true"
+         failOnNotice="true"
+         colors="true"
+         cacheResult="true"
+         cacheDirectory="cache/.phpunit.cache">
     <testsuites>
         <testsuite name="default">
             <directory>tests</directory>

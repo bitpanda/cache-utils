@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
+use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 
 return (new Config())
+    ->setParallelConfig(ParallelConfigFactory::detect())
     ->setUsingCache(true)
     ->setCacheFile('./cache/.php_cs.cache')
     ->setRiskyAllowed(true)
@@ -23,6 +25,9 @@ return (new Config())
     )
     ->setRules([
         '@PSR12' => true,
+        '@PSR12:risky' => true,
+        'declare_strict_types' => true,
+        'php_unit_strict' => true,
         'psr_autoloading' => true,
         'yoda_style' => [
             'always_move_variable' => false,
@@ -42,8 +47,6 @@ return (new Config())
                 'return',
             ],
         ],
-        'declare_strict_types' => true,
-        'php_unit_strict' => true,
         'single_quote' => true,
         'blank_line_after_opening_tag' => true,
         'no_extra_blank_lines' => [
@@ -63,11 +66,7 @@ return (new Config())
         ],
         'class_attributes_separation' => [
             'elements' => [
-                'const' => 'one',
-                'method' => 'one',
-                'property' => 'one',
                 'trait_import' => 'none',
-                'case' => 'none',
             ],
         ],
         'no_whitespace_in_blank_line' => true,
@@ -102,39 +101,17 @@ return (new Config())
         ],
         'no_singleline_whitespace_before_semicolons' => true,
         'multiline_whitespace_before_semicolons' => true,
-        'ordered_class_elements' => [
-            'order' => [
-                'use_trait',
-                'constant_public',
-                'constant_protected',
-                'constant_private',
-                'property_public_static',
-                'property_protected_static',
-                'property_private_static',
-                'property_public',
-                'property_protected',
-                'property_private',
-                'construct',
-                'destruct',
-                'magic',
-                'phpunit',
-                'method_public',
-                'method_protected',
-                'method_private',
-                'method_public_abstract',
-                'method_protected_abstract',
-                'method_public_abstract_static',
-                'method_protected_abstract_static',
-                'method_public_static',
-                'method_protected_static',
-                'method_private_static',
-            ],
-            'sort_algorithm' => 'alpha',
-        ],
         'cast_spaces' => [
             'space' => 'none',
         ],
-        'trailing_comma_in_multiline' => true,
+        'trailing_comma_in_multiline' => [
+            'elements' => [
+                'arguments',
+                'arrays',
+                'match',
+                'parameters',
+            ],
+        ],
         'trim_array_spaces' => true,
         'short_scalar_cast' => true,
         'no_useless_else' => true,
