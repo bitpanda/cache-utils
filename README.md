@@ -37,7 +37,10 @@ sources.
 - Automatic Population: When a cache hit occurs at any level, the retrieved
   value is automatically populated in all higher levels of the cache hierarchy.
   This ensures that subsequent requests for the same key will hit higher cache
-  levels, improving performance.
+  levels, improving performance. Note: re-population of higher level caches
+  happens without setting a TTL as the current implementation does not know the
+  original TTL. You could define a default TTL by wrapping each
+  level with a [default ttl adapter](#default-ttl-adapter).
 
 ### Stale-While-Revalidate (SWR)
 
