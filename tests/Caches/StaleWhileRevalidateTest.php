@@ -245,6 +245,11 @@ class StaleWhileRevalidateTest extends TestCase
                 'key2' => null,
                 'key3' => $validItem,
             ]);
+        $cache
+            ->expects($this->once())
+            ->method('setMultiple')
+            ->with(['key1' => new CacheItem('new-value', time(), 500)])
+            ->willReturn(true);
 
         /** @var RevalidatorInterface&MockObject $revalidator */
         $revalidator = $this->getMockBuilder(RevalidatorInterface::class)->getMock();
@@ -525,6 +530,11 @@ class StaleWhileRevalidateTest extends TestCase
                 'key2' => null,
                 'key3' => $validItem,
             ]);
+        $cache
+            ->expects($this->once())
+            ->method('setMultiple')
+            ->with(['key1' => new CacheItem('new-value', time(), 500)])
+            ->willReturn(true);
 
         /** @var CacheInterface&MockObject $sourceCache */
         $sourceCache = $this->getMockBuilder(CacheInterface::class)->getMock();

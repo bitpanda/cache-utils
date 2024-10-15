@@ -32,6 +32,9 @@ class StaleWhileRevalidate implements CacheInterface
         return $this->cache->delete($key);
     }
 
+    /**
+     * @param iterable<int,string> $keys
+     */
     public function deleteMultiple($keys): bool
     {
         return $this->cache->deleteMultiple($keys);
@@ -59,6 +62,10 @@ class StaleWhileRevalidate implements CacheInterface
         return $cacheItem->value;
     }
 
+    /**
+     * @param iterable<int,string> $keys
+     * @return iterable<string,mixed>
+     */
     public function getMultiple($keys, $default = null): iterable
     {
         /** @var array<string,CacheItem|null> $cacheItems */
@@ -149,10 +156,12 @@ class StaleWhileRevalidate implements CacheInterface
      */
     protected function setMultipleCacheItems(iterable $cacheItems, int $ttl): bool
     {
-        return $this->cache->setMultiple(
+        $x = $this->cache->setMultiple(
             $cacheItems,
             $this->ttlAfterStale === null ? null : $ttl + $this->ttlAfterStale,
         );
+
+        return $x;
     }
 
     private function validateCacheItem(mixed $item, string $key): CacheItem

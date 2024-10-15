@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Bitpanda\CacheUtils\Caches\Adapters;
 
+use DateInterval;
 use Psr\SimpleCache\CacheInterface;
 
 class KeySuffix implements CacheInterface
@@ -24,6 +25,9 @@ class KeySuffix implements CacheInterface
         return $this->cache->delete($this->key($key));
     }
 
+    /**
+     * @param iterable<int,string> $keys
+     */
     public function deleteMultiple($keys): bool
     {
         return $this->cache->deleteMultiple($this->keys($keys));
@@ -34,6 +38,10 @@ class KeySuffix implements CacheInterface
         return $this->cache->get($this->key($key), $default);
     }
 
+    /**
+     * @param iterable<int,string> $keys
+     * @return iterable<string,mixed>
+     */
     public function getMultiple($keys, $default = null): iterable
     {
         return $this->cache->getMultiple($this->keys($keys), $default);
@@ -44,6 +52,9 @@ class KeySuffix implements CacheInterface
         return $this->cache->has($this->key($key));
     }
 
+    /**
+     * @param null|int|DateInterval $ttl
+     */
     public function set($key, $value, $ttl = null): bool
     {
         return $this->cache->set($this->key($key), $value, $ttl);

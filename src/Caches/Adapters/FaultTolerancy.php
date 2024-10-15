@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Bitpanda\CacheUtils\Caches\Adapters;
 
+use DateInterval;
 use Psr\SimpleCache\CacheInterface;
 use Throwable;
 
@@ -31,6 +32,9 @@ class FaultTolerancy implements CacheInterface
         }
     }
 
+    /**
+     * @param iterable<int,string> $keys
+     */
     public function deleteMultiple($keys): bool
     {
         try {
@@ -49,6 +53,10 @@ class FaultTolerancy implements CacheInterface
         }
     }
 
+    /**
+     * @param iterable<int,string> $keys
+     * @return iterable<string,mixed>
+     */
     public function getMultiple($keys, $default = null): iterable
     {
         try {
@@ -67,6 +75,9 @@ class FaultTolerancy implements CacheInterface
         }
     }
 
+    /**
+     * @param null|int|DateInterval $ttl
+     */
     public function set($key, $value, $ttl = null): bool
     {
         try {

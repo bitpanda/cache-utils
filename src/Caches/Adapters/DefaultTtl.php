@@ -25,6 +25,9 @@ class DefaultTtl implements CacheInterface
         return $this->cache->delete($key);
     }
 
+    /**
+     * @param iterable<int,string> $keys
+     */
     public function deleteMultiple($keys): bool
     {
         return $this->cache->deleteMultiple($keys);
@@ -35,6 +38,10 @@ class DefaultTtl implements CacheInterface
         return $this->cache->get($key, $default);
     }
 
+    /**
+     * @param iterable<int,string> $keys
+     * @return iterable<string,mixed>
+     */
     public function getMultiple($keys, $default = null): iterable
     {
         return $this->cache->getMultiple($keys, $default);
@@ -45,6 +52,9 @@ class DefaultTtl implements CacheInterface
         return $this->cache->has($key);
     }
 
+    /**
+     * @param null|int|DateInterval $ttl
+     */
     public function set($key, $value, $ttl = null): bool
     {
         return $this->cache->set($key, $value, $ttl ?? $this->ttl);
